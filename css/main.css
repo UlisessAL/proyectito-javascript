@@ -124,3 +124,54 @@
     padding-bottom: 70px;
 }
 
+.card-img-top{
+    width: 286px;
+    height: 220px;
+}
+
+.ocultar-boton-menu{
+    display: none;
+}
+
+#mostrar-boton-menu{
+    display: block;
+}
+
+.boton-menu{
+    margin-left: 800px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background: #ffa8d9;
+    box-shadow: 0 5px #ff69b4;
+}
+
+.boton-menu:hover {
+    box-shadow: 0 3px #ff69b4;
+    top: 1px;
+}
+
+.boton-menu:active {
+    box-shadow: 0 0 #ff69b4;
+    top: 5px;
+}
+
+.cartas{
+    display: none;
+}
+
+#mostrar-cartas{
+    display: block;
+}
