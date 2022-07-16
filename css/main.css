@@ -172,6 +172,64 @@
     display: none;
 }
 
+.las-cartas{
+    width: 286px;
+    height: 500px;
+}
+
 #mostrar-cartas{
-    display: block;
+    display: grid;  
+    grid-template-columns: auto auto auto;
+    margin-left: 250px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.boton-filtrar{
+    margin-left: 800px;
+    margin-bottom: 30px;
+    background-color: #ffa8d9;
+    font-size: 20px;
+    color: #0d0d0e;
+}
+
+.ver-carro{
+    display: none;
+}
+
+#mostrar-ver-carro{
+    display: grid;  
+    grid-template-columns: auto auto auto;
+    margin-left: 250px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.mostrar-el-carrito {
+    margin-left: 830px;
+    margin-bottom: 40px;
+    color: #FFF;
+    border: 2px solid rgb(216, 2, 134);
+    border-radius: 0px;
+    padding: 18px 36px;
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #D80286;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+
+}
+.mostrar-el-carrito:hover {
+    box-shadow: inset 0 100px 0 0 #D80286;
+}
+
+.btn-carrito{
+    display: none;
+}
+
+#btn-mostrar-carrito{
+    display: inline-block;
 }
