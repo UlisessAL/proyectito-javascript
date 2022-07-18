@@ -1,16 +1,16 @@
+// Declaracion de variables
+
 const botonIniciar = document.querySelector(".boton-iniciar"),
 sectionInicio = document.querySelector(".inicio"),
-formulario = document.querySelector(".formulario");
-
-const botonMenu = document.querySelector(".boton-menu"),
-cartas = document.querySelector(".cartas");
-
-const btnMostrarCarrito = document.querySelector(".mostrar-el-carrito"),
+formulario = document.querySelector(".formulario"),
+botonMenu = document.querySelector(".boton-menu"),
+cartas = document.querySelector(".cartas"),
+btnMostrarCarrito = document.querySelector(".mostrar-el-carrito"),
 verCarro = document.querySelector(".ver-carro"),
 verBtnCarrito = document.querySelector(".btn-carrito");
 
 
-// Mostrar el ormulario de inicio de sesión
+// Mostrar el Formulario de inicio de sesión
 
 botonIniciar.addEventListener("click", ()=> {
     botonIniciar.id = "ocultar-tarjeta";
@@ -25,7 +25,7 @@ botonIniciar.addEventListener("click", ()=> {
     let recordarme = document.querySelector("#exampleCheck1")
 
 
-    // guardar los datos introducidos por el usuario en el Local/Session storage
+    // Guardar los datos introducidos por el usuario en el Local/Session storage
 
     function guardar(valor) {
         let user = { usuario:botonEmail.value, contraseña:botonContraseña.value};
@@ -37,7 +37,8 @@ botonIniciar.addEventListener("click", ()=> {
             
         }else{
 
-            let alertaP = document.querySelector(".alerta-p");
+            let alertaP;
+            alertaP = document.querySelector(".alerta-p");
 
             sectionInicio.id = "ocultar-tarjeta";
 
@@ -117,7 +118,7 @@ const cheesecake = crearPlato(1,"cheesecake de frambuesas", 2000, "cheesecake-fr
 donaChocolate = crearPlato(2,"dona bañada en chocolate negro", 250, "dona.jpg","dona-bañada-en-chocolate-negro"),
 waffles = crearPlato(3, "waffles con frutilla y arandanos", 2300, "waffles-frutas.jpg","waffles-con-frutilla-y-arandanos");
 
-cargarPlato(cheesecake)
+cargarPlato(cheesecake);
 cargarPlato(donaChocolate);
 cargarPlato(waffles);
 
@@ -151,8 +152,9 @@ function crearHTML(array) {
 }
 
 
-const botonBuscar = document.querySelector("#boton-buscar");
-search = document.querySelector(".boton-filtrar")
+const botonBuscar = document.querySelector("#boton-buscar"),
+search = document.querySelector(".boton-filtrar"),
+cantidadPlato = document.querySelector(".cantidad-plato");
 crearHTML(menu);
 
 
@@ -163,7 +165,7 @@ botonBuscar.addEventListener("click", (e) => {
     crearHTML(filtro);
 })
 
-// añadir al carrito
+// Añadir al carrito
 const carrito = [];
 
 function agregarCarrito(arr, item) {
@@ -195,7 +197,7 @@ botonWaffles.addEventListener("click", ()=> {
 })
 
 
-// mostrar el carrito
+// Mostrar el carrito
 
 function verCarrito(array) {
     let html;
