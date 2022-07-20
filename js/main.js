@@ -16,11 +16,9 @@ botonIniciar.addEventListener("click", ()=> {
     botonIniciar.id = "ocultar-tarjeta";
     formulario.id = "mostrar-formulario";
 
-    const botonEmail = document.querySelector("#exampleInputEmail1");
-
-    const botonContraseña = document.querySelector("#exampleInputPassword1");
-
-    const botonEnviar = document.querySelector("#boton-enviar");
+    const botonEmail = document.querySelector("#exampleInputEmail1"),
+    botonContraseña = document.querySelector("#exampleInputPassword1"),
+    botonEnviar = document.querySelector("#boton-enviar");
 
     let recordarme = document.querySelector("#exampleCheck1")
 
@@ -42,12 +40,9 @@ botonIniciar.addEventListener("click", ()=> {
 
             sectionInicio.id = "ocultar-tarjeta";
 
-            if (valor === "sessionStorage") {
-                sessionStorage.setItem("item", JSON.stringify(user));
-            }
-            if (valor === "localStorage") {
-                localStorage.setItem("item", JSON.stringify(user));
-            }
+            valor === "sessionStorage" && sessionStorage.setItem("item", JSON.stringify(user));
+
+            valor === "localStorage" && localStorage.setItem("item", JSON.stringify(user));
 
             const formularioDos = document.querySelector("#formulario-2");
 
@@ -72,18 +67,13 @@ botonIniciar.addEventListener("click", ()=> {
     botonEnviar.addEventListener("click", (event)=> {
         event.preventDefault();
         
-        if (recordarme.checked) {
-            guardar("localStorage");
-        } else {
-            guardar("sessionStorage");
-        }
-
+        recordarme.checked ? guardar("localStorage") : guardar("sessionStorage");
 
     })
 
 })
 
-// mostrar el menú
+// Mostrar el menú
 
 botonMenu.addEventListener("click", ()=> {
     cartas.id = "mostrar-cartas";
@@ -93,7 +83,7 @@ botonMenu.addEventListener("click", ()=> {
 
 const menu =[];
 
-// crear los platos del menú
+// Crear los platos del menú
 
 function Plato(id, nombre, precio, img, btn) {
     this.id = id;
@@ -108,7 +98,7 @@ function crearPlato(id,nombre,precio, img, btn){
     return plato;
 }
 
-// cargar al menú los nuevos platos
+// Cargar al menú los nuevos platos
 
 function cargarPlato(plato){
     menu.push(plato);
@@ -135,14 +125,18 @@ function filtrarPlatos (filtro) {
 
 function crearHTML(array) {
     let html;
-    for (const platito of array) {
+    for (const menu of array) {
+
+        const { nombre, precio, img, btn} = menu;
+
+
         html = 
         `<div class = "las-cartas"> 
-                <div class="card"> <img src="../img/${platito.img}" class="card-img-top">
+                <div class="card"> <img src="img/${img}" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">${platito.nombre.toUpperCase()}</h5>
-                        <p class="card-text">$${platito.precio}</p>
-                        <button type='button' class='btn btn-primary' id="${platito.btn}">Añadir al carrito</button>
+                        <h5 class="card-title">${nombre.toUpperCase()}</h5>
+                        <p class="card-text">$${precio}</p>
+                        <button type='button' class='btn btn-primary' id="${btn}">Añadir al carrito</button>
                     </div>
 
                 </div>
@@ -201,13 +195,16 @@ botonWaffles.addEventListener("click", ()=> {
 
 function verCarrito(array) {
     let html;
-    for (const platito of array) {
+    for (const menu of array) {
+
+        const { nombre, precio, img} = menu;
+
         html = 
         `<div class = "g-col-6"> 
-                <div class="card" style="width: 18rem;"> <img src="../img/${platito.img}" class="card-img-top">
+                <div class="card" style="width: 18rem;"> <img src="img/${img}" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">${platito.nombre.toUpperCase()}</h5>
-                        <p class="card-text">$${platito.precio}</p>
+                        <h5 class="card-title">${nombre.toUpperCase()}</h5>
+                        <p class="card-text">$${precio}</p>
                     </div>
 
                 </div>
@@ -218,6 +215,7 @@ function verCarrito(array) {
 
 btnMostrarCarrito.addEventListener("click", (e) => {
     e.preventDefault();
+    verCarro.innerHTML = "";
     verCarrito(carrito);
 })
 
