@@ -116,12 +116,6 @@
     display: none;
 }
 
-.alerta-p{
-    font-size: 20px;
-    margin-left: 250px;
-    padding-bottom: 70px;
-}
-
 .card-img-top{
     width: 286px;
     height: 220px;
@@ -230,4 +224,123 @@
 
 #btn-mostrar-carrito{
     display: inline-block;
+}
+
+.ver-btn-comprar{
+    display: none;
+}
+
+#ver-btn-comprar{
+    display: inline-block;
+}
+
+.boton-comprar{
+    margin-left: 850px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background: #ffa8d9;
+    box-shadow: 0 5px #ff69b4;
+}
+
+.main-comprar{
+    display: grid;
+    grid-template-areas: 
+    "tabla opcion";
+        background-color: #fff;
+}
+
+.tabla-comprar{
+    grid-area: tabla;
+    margin: auto;
+    font-size: 30px;
+    border-style:double;
+    background-color: #ffffff;
+    border-color: #D80286;
+}
+
+.tabla {
+    border-style:solid;
+    border-color: #D80286;
+    font-family: 'Satisfy', cursive;
+    color: #473e43;
+}
+
+.opcion-comprar{
+    grid-area: opcion;
+    background-color: #fff;
+}
+
+.boton-realizar-compra{
+    margin-left: 200px;
+    margin-top: 100px;
+
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background: #ffa8d9;
+    box-shadow: 0 5px #ff69b4;
+}
+
+.formulario-compra{
+    display: grid;
+    grid-template-areas: 
+    "input imagen"
+    "input imagen";
+}
+
+.titulo-comprar {
+    font-size: 50px;
+    margin-left: 650px;
+    color: #D80286;
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.imagen-tarjeta{
+    height: 400px;
+    width: 450px;
+    grid-area: imagen;
+    margin-right: 20px;
+}
+
+.subtitulo-comprar{
+    color: #e02c9b;
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+
+.input-tarjetas{
+    grid-area: input;
+    background-color: #bfbfc0;
+}
+
+.tarjetas{
+    margin: 20px;
+}
+
+
+.texto-input{
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
 }

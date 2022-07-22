@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar</title>
+
+    <!-- Link Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="body">
+    
+
+    <header><h2 class="titulo-comprar">Realizar la Compra</h2></header>
+
+    <main class="main-comprar">
+        <div class="tabla-comprar">
+            <table class="tabla">
+                <caption>Carrito</caption>
+                <thead>
+                <tr>
+                    <th class="tabla">Nombre</th>
+                    <th class="tabla">Precio</th>
+                </tr>
+            </thead>
+            <tbody class="contenedor-compra">
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>TOTAL</th>
+                    <th class="precioTotal"></th>
+                </tr>
+            </tfoot>
+                </table>
+        </div>
+
+
+
+        <div class="opcion-comprar">
+
+            <h2 class="subtitulo-comprar">Método de pago(tarjeta)</h2>
+            <form action="" class="formulario-compra">
+                <div class="input-tarjetas">
+
+                    <div class="tarjetas">
+                        <label for="text" class="texto-input">Número de tarjeta</label>
+                        <input type="text" class="input-element" >
+                    </div>
+                <br>
+
+                    <div class="tarjetas">
+                        <label for="text" class="texto-input">Fecha de vencimiento</label>
+                        <input type="text" class="input-element-2">
+                    </div>
+
+                    <input type="button" value="Comprar" class="boton-realizar-compra">
+                </div>
+                <img src="../img/tarjetas.jpg" alt="tarjetas" class="imagen-tarjeta">
+
+                
+            </form>
+        </div>
+
+    </main>
+
+
+    <!-- Link de sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
+
+<!-- Link Cleave.js -->
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+
+    <script src="../js/compra.js"></script>
+</body>
+</html>

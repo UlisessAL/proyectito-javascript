@@ -28,15 +28,14 @@ botonIniciar.addEventListener("click", ()=> {
     function guardar(valor) {
         let user = { usuario:botonEmail.value, contraseña:botonContraseña.value};
         if (user.usuario == "" || user.contraseña == "")  {
-            let alerta = document.createElement("p")
-            alerta.innerText = "Ningún campo puede estar vacío";
-            alerta.className = "alerta-p";
-            sectionInicio.appendChild(alerta);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ningun campo puede estar vacío',
+            })
             
         }else{
-
-            let alertaP;
-            alertaP = document.querySelector(".alerta-p");
 
             sectionInicio.id = "ocultar-tarjeta";
 
@@ -166,28 +165,48 @@ function agregarCarrito(arr, item) {
     return arr.push(item);
 }
 
+function agregarLocal(arr) {
+    localStorage.setItem("carrito", arr)
+}
+
 const botonCheesecake = document.querySelector("#cheesecake-de-frambuesas"),
 botonDona = document.querySelector("#dona-bañada-en-chocolate-negro"),
 botonWaffles = document.querySelector("#waffles-con-frutilla-y-arandanos");
-
-localStorage.setItem("carrito", carrito);
 
 botonCheesecake.addEventListener("click", ()=> {
     agregarCarrito(carrito, cheesecake);
     const cheesecakeJson = JSON.stringify(cheesecake);
     localStorage.setItem("cheesecake", cheesecakeJson);
+    Toastify({
+        text: "Se agregó al carrito",
+        duration: 3000
+        }).showToast();
+
+        agregarLocal(JSON.stringify(carrito));
 })
 
 botonDona.addEventListener("click", ()=> {
     agregarCarrito(carrito, donaChocolate);
     const donaChocolateJson = JSON.stringify(donaChocolate);
     localStorage.setItem("dona", donaChocolateJson);
+    Toastify({
+        text: "Se agregó al carrito",
+        duration: 3000
+        }).showToast();
+
+        agregarLocal(JSON.stringify(carrito));
 })
 
 botonWaffles.addEventListener("click", ()=> {
     agregarCarrito(carrito, waffles);
     const wafflesJson = JSON.stringify(waffles);
     localStorage.setItem("waffles", wafflesJson);
+    Toastify({
+        text: "Se agregó al carrito",
+        duration: 3000
+        }).showToast();
+
+        agregarLocal(JSON.stringify(carrito));
 })
 
 
@@ -213,11 +232,36 @@ function verCarrito(array) {
     }
 }
 
+const comprarBtn = document.querySelector(".ver-btn-comprar");
+
 btnMostrarCarrito.addEventListener("click", (e) => {
     e.preventDefault();
     verCarro.innerHTML = "";
-    verCarrito(carrito);
+    verCarrito(JSON.parse(localStorage.getItem("carrito")));
+    comprarBtn.id = "ver-btn-comprar";
 })
+
+const botonComprar = document.querySelector(".boton-comprar");
+
+botonComprar.addEventListener("click", (e)=> {
+    e.preventDefault();
+
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    carrito == ""
+    ? Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'El Carrito no puede estar vacío',
+    })
+    : window.location.href = "pages/comprar.html";
+
+})
+
+
+
+
+
 
 
 
