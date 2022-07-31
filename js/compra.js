@@ -49,25 +49,25 @@ function hacerTabla(array) {
 
 hacerTabla(JSON.parse(localStorage.getItem("carrito")));
 
-const precioTotal = document.querySelector(".precioTotal");
+// const precioTotal = document.querySelector(".precioTotal");
 
-const carrito = JSON.parse(localStorage.getItem("carrito"));
+// const carrito = JSON.parse(localStorage.getItem("carrito"));
 
-const total = 0;
+// const total = 0;
 
-function calcularTotal(array) {
-    for (const menu of array) {
+// function calcularTotal(array) {
+//     for (const total of array) {
 
-        const {precio} = menu;
+//         const precio = JSON.parse(localStorage.getItem("carrito").precio);
 
-        const sumarTotal = precio + total;
-        return sumarTotal
-    }
-}
+//         const sumarTotal = precio + total;
+//         return sumarTotal
+//     }
+// }
 
-precioTotal.innerHTML = "$" + calcularTotal(carrito);
+// precioTotal.innerHTML = "$" + calcularTotal(JSON.parse(localStorage.getItem("carrito")));
 
-console.log(carrito);
+// console.log(carrito);
 
 var cleave = new Cleave('.input-element', {
     creditCard: true,
@@ -100,7 +100,10 @@ btnRealizarCompra.addEventListener("click", (e)=>{
             timer: 4500,
         })
             localStorage.clear();
-            window.location.href = "../index.html";
+            setTimeout(()=>{
+                window.location.href = "../index.html";
+            },2500)
+            
     }
 
     

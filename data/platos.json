@@ -1,0 +1,23 @@
+[
+    {
+    "btn":"cheesecake-de-frambuesas",
+    "id":1,
+    "img":"cheesecake-fram.jpg",
+    "nombre":"cheesecake de frambuesas",
+    "precio":2000
+    },
+    {
+    "btn":"dona-bañada-en-chocolate-negro",
+    "id":2,
+    "img":"dona.jpg",
+    "nombre":"dona bañada en chocolate negro",
+    "precio":250
+    },
+    {
+    "btn":"waffles-con-frutilla-y-arandanos",
+    "id":3,
+    "img":"waffles-frutas.jpg",
+    "nombre":"waffles con frutilla y arandanos",
+    "precio":2300
+    }
+]

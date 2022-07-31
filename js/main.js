@@ -80,85 +80,50 @@ botonMenu.addEventListener("click", ()=> {
     verBtnCarrito.id = "btn-mostrar-carrito";
 })
 
-const menu =[];
 
-// Crear los platos del menú
+        const pedirPlato = async ()=>{
+            const respuesta = await fetch( "../data/platos.json ")
+            const data = await respuesta.json()
 
-function Plato(id, nombre, precio, img, btn) {
-    this.id = id;
-    this.nombre = nombre;
-    this.precio = precio;
-    this.img = img;
-    this.btn = btn;
-}
-
-function crearPlato(id,nombre,precio, img, btn){
-    const plato = new Plato(id,nombre,precio, img, btn);
-    return plato;
-}
-
-// Cargar al menú los nuevos platos
-
-function cargarPlato(plato){
-    menu.push(plato);
-}
-
-const cheesecake = crearPlato(1,"cheesecake de frambuesas", 2000, "cheesecake-fram.jpg","cheesecake-de-frambuesas"),
-donaChocolate = crearPlato(2,"dona bañada en chocolate negro", 250, "dona.jpg","dona-bañada-en-chocolate-negro"),
-waffles = crearPlato(3, "waffles con frutilla y arandanos", 2300, "waffles-frutas.jpg","waffles-con-frutilla-y-arandanos");
-
-cargarPlato(cheesecake);
-cargarPlato(donaChocolate);
-cargarPlato(waffles);
-
-
-
-// filtrado de platos
-function filtrarPlatos (filtro) {
-    let filtrado = menu.filter((el) => {
-        return el.nombre.includes(filtro);
-    });
-    return filtrado;
-}
-
-
-function crearHTML(array) {
-    let html;
-    for (const menu of array) {
-
-        const { nombre, precio, img, btn} = menu;
-
-
-        html = 
+            for (let i of data) {
+;
+            let html;
+            html = 
         `<div class = "las-cartas"> 
-                <div class="card"> <img src="img/${img}" class="card-img-top">
+                <div class="card"> <img src="img/${i.img}" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">${nombre.toUpperCase()}</h5>
-                        <p class="card-text">$${precio}</p>
-                        <button type='button' class='btn btn-primary' id="${btn}">Añadir al carrito</button>
+                        <h5 class="card-title">${i.nombre.toUpperCase()}</h5>
+                        <p class="card-text">$${i.precio}</p>
+                        <button type='button' class='btn btn-primary' id="${i.btn}">Añadir al carrito</button>
                     </div>
 
                 </div>
         </div> `;
         cartas.innerHTML += html;
-    }
 }
 
+    
+    // filtrado de platos
+    function filtrarPlatos (filtro) {
+        let filtrado = data.filter((el) => {
+            return el.nombre.includes(filtro);
+        });
+        return filtrado;
+    }
+    
+    const botonBuscar = document.querySelector("#boton-buscar"),
+    search = document.querySelector(".boton-filtrar"),
+    cantidadPlato = document.querySelector(".cantidad-plato");
+    
+    
+    botonBuscar.addEventListener("click", (e) => {
+        e.preventDefault();
+        cartas.innerHTML = "";
+        let filtro = filtrarPlatos(search.value);
+        pedirPlato(filtro);
+    })
+    
 
-const botonBuscar = document.querySelector("#boton-buscar"),
-search = document.querySelector(".boton-filtrar"),
-cantidadPlato = document.querySelector(".cantidad-plato");
-crearHTML(menu);
-
-
-botonBuscar.addEventListener("click", (e) => {
-    e.preventDefault();
-    cartas.innerHTML = "";
-    let filtro = filtrarPlatos(search.value);
-    crearHTML(filtro);
-})
-
-// Añadir al carrito
 const carrito = [];
 
 function agregarCarrito(arr, item) {
@@ -172,6 +137,10 @@ function agregarLocal(arr) {
 const botonCheesecake = document.querySelector("#cheesecake-de-frambuesas"),
 botonDona = document.querySelector("#dona-bañada-en-chocolate-negro"),
 botonWaffles = document.querySelector("#waffles-con-frutilla-y-arandanos");
+
+const cheesecake = data[0],
+donaChocolate = data[1],
+waffles = data[2];
 
 botonCheesecake.addEventListener("click", ()=> {
     agregarCarrito(carrito, cheesecake);
@@ -216,6 +185,7 @@ function verCarrito(array) {
     let html;
     for (const menu of array) {
 
+
         const { nombre, precio, img} = menu;
 
         html = 
@@ -229,6 +199,7 @@ function verCarrito(array) {
                 </div>
         </div> `;
         verCarro.innerHTML += html;
+        
     }
 }
 
@@ -261,8 +232,8 @@ botonComprar.addEventListener("click", (e)=> {
 
 
 
+}
 
-
-
-
+pedirPlato();
+        
 
