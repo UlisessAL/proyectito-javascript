@@ -1,45 +1,24 @@
-const menu =[];
+// Llamar a los platos que estan en platos.json
 
-// Crear los platos del menú
-
-function Plato(id, nombre, precio, img, btn) {
-    this.id = id;
-    this.nombre = nombre;
-    this.precio = precio;
-    this.img = img;
-    this.btn = btn;
-}
-
-function crearPlato(id,nombre,precio, img, btn){
-    const plato = new Plato(id,nombre,precio, img, btn);
-    return plato;
-}
-
-// Cargar al menú los nuevos platos
-
-function cargarPlato(plato){
-    menu.push(plato);
-}
-
-const cheesecake = crearPlato(1,"cheesecake de frambuesas", 2000, "cheesecake-fram.jpg","cheesecake-de-frambuesas"),
-donaChocolate = crearPlato(2,"dona bañada en chocolate negro", 250, "dona.jpg","dona-bañada-en-chocolate-negro"),
-waffles = crearPlato(3, "waffles con frutilla y arandanos", 2300, "waffles-frutas.jpg","waffles-con-frutilla-y-arandanos");
-
-cargarPlato(cheesecake);
-cargarPlato(donaChocolate);
-cargarPlato(waffles);
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 const contenedorCompra = document.querySelector(".contenedor-compra");
 
-function hacerTabla(array) {
-    let html;
-    for (const menu of array) {
+// Hacer la tabla del carrito
 
-        const { nombre, precio} = menu;
+function hacerTabla() {
+    let html;
+    for (plato of carrito) {
+
+        const { nombre, precio} = plato,
+        precioTotal = document.querySelector(".precio-total"),
+        total = totalPrecio();
+
+        precioTotal.innerHTML = total;
 
         html = 
         `<tr>
-            <td class ="tabla">${nombre}</td>
+            <td class ="tabla">${nombre} --->  </td>
 			<td class ="tabla">$${precio}</td></tr>
         </tr>
 		`;
@@ -47,27 +26,21 @@ function hacerTabla(array) {
     }
 }
 
-hacerTabla(JSON.parse(localStorage.getItem("carrito")));
+hacerTabla();
 
-// const precioTotal = document.querySelector(".precioTotal");
+// Calcular el total
 
-// const carrito = JSON.parse(localStorage.getItem("carrito"));
+function totalPrecio() {
+    let total = 0;
+    for (plato of carrito) {
+        total += plato.precio;
+    }
 
-// const total = 0;
+    return total
+}
 
-// function calcularTotal(array) {
-//     for (const total of array) {
 
-//         const precio = JSON.parse(localStorage.getItem("carrito").precio);
-
-//         const sumarTotal = precio + total;
-//         return sumarTotal
-//     }
-// }
-
-// precioTotal.innerHTML = "$" + calcularTotal(JSON.parse(localStorage.getItem("carrito")));
-
-// console.log(carrito);
+// Inputs de las tarjetas
 
 var cleave = new Cleave('.input-element', {
     creditCard: true,
@@ -83,11 +56,15 @@ var cleave = new Cleave('.input-element-2', {
 
 const inputComprar1 = document.querySelector(".input-element"),
 inputComprar2 = document.querySelector(".input-element-2"),
-btnRealizarCompra = document.querySelector(".boton-realizar-compra");
+btnRealizarCompra = document.querySelector(".boton-realizar-compra"),
+nombreCompra = document.querySelector(".nombre-compra"),
+emailCompra = document.querySelector(".email-compra")
+
+// Validar la compra
 
 btnRealizarCompra.addEventListener("click", (e)=>{
     e.preventDefault();
-    if (inputComprar1.value == "" || inputComprar2.value == "") {
+    if (inputComprar1.value == "" || inputComprar2.value == "" || nombreCompra.value == "" || emailCompra.value == "") {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -105,8 +82,6 @@ btnRealizarCompra.addEventListener("click", (e)=>{
             },2500)
             
     }
-
-    
 
 })
 

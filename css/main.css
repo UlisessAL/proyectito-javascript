@@ -285,7 +285,9 @@
 
 .boton-realizar-compra{
     margin-left: 200px;
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding-top: 200px;
 
     min-width: 130px;
     height: 40px;
@@ -306,7 +308,6 @@
 .formulario-compra{
     display: grid;
     grid-template-areas: 
-    "input imagen"
     "input imagen";
 }
 
@@ -318,29 +319,19 @@
 }
 
 .imagen-tarjeta{
-    height: 400px;
+    height: 350px;
     width: 450px;
     grid-area: imagen;
     margin-right: 20px;
+    margin-top: -400px;
+}
+
+.div-comprar{
+    grid-area: input;
+    padding-top: 100px;
 }
 
 .subtitulo-comprar{
     color: #e02c9b;
     font-family: 'Mochiy Pop One', sans-serif;
-}
-
-
-.input-tarjetas{
-    grid-area: input;
-    background-color: #bfbfc0;
-}
-
-.tarjetas{
-    margin: 20px;
-}
-
-
-.texto-input{
-    font-size: 25px;
-    font-family: 'Courier New', Courier, monospace;
 }

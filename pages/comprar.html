@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprar</title>
 
+    <!-- link bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Link Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +30,6 @@
     <main class="main-comprar">
         <div class="tabla-comprar">
             <table class="tabla">
-                <caption>Carrito</caption>
                 <thead>
                 <tr>
                     <th class="tabla">Nombre</th>
@@ -38,7 +41,7 @@
             <tfoot>
                 <tr>
                     <th>TOTAL</th>
-                    <th class="precioTotal"></th>
+                    <th class="precio-total"></th>
                 </tr>
             </tfoot>
                 </table>
@@ -48,31 +51,40 @@
 
         <div class="opcion-comprar">
 
-            <h2 class="subtitulo-comprar">Método de pago(tarjeta)</h2>
-            <form action="" class="formulario-compra">
-                <div class="input-tarjetas">
+            <div class="div-comprar">
 
-                    <div class="tarjetas">
-                        <label for="text" class="texto-input">Número de tarjeta</label>
-                        <input type="text" class="input-element" >
-                    </div>
-                <br>
+            <div class="form-floating">
+                <input class="nombre-compra form-control" id="floatingInput" placeholder="Nombre">
+                <label for="floatingPassword">Nombre</label>
+            </div>
 
-                    <div class="tarjetas">
-                        <label for="text" class="texto-input">Fecha de vencimiento</label>
-                        <input type="text" class="input-element-2">
-                    </div>
+            <br>
 
-                    <input type="button" value="Comprar" class="boton-realizar-compra">
-                </div>
-                <img src="../img/tarjetas.jpg" alt="tarjetas" class="imagen-tarjeta">
+            <div class="form-floating mb-3">
+                <input type="email" class="email-compra form-control" id="floatingInput" placeholder="Email">
+                <label for="floatingInput">Dirección de Email</label>
+            </div>
 
-                
-            </form>
+            <div class="form-floating mb-3">
+                <input type="text" class="input-element form-control" id="floatingInput">
+                <label for="floatingInput">Número de tarjeta</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="input-element-2 form-control" id="floatingPassword">
+                <label for="floatingInput">Fecha de vencimiento</label>
+            </div>
+
+            <input type="button" value="Comprar" class="boton-realizar-compra">
         </div>
+    </div>
+        <img src="../img/tarjetas.jpg" alt="tarjetas" class="imagen-tarjeta">
 
     </main>
 
+
+
+    <!-- link bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
     <!-- Link de sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>

@@ -72,168 +72,147 @@ botonIniciar.addEventListener("click", ()=> {
 
 })
 
-// Mostrar el menú
 
-botonMenu.addEventListener("click", ()=> {
-    cartas.id = "mostrar-cartas";
-    verCarro.id ="mostrar-ver-carro";
-    verBtnCarrito.id = "btn-mostrar-carrito";
+// Fetch
+
+async function platosFetch () {
+    const respuesta = await fetch( "../data/platos.json ");
+    return await respuesta.json()
+}
+
+// Hacer que el menú sean los platos que hay en el fetch
+
+let menu = [];
+
+platosFetch().then(platos => {
+    menu = platos;
 })
 
+// Mostrar el menú
 
-        const pedirPlato = async ()=>{
-            const respuesta = await fetch( "../data/platos.json ")
-            const data = await respuesta.json()
-
-            for (let i of data) {
-;
-            let html;
-            html = 
+function crearHTML() {
+    let html;
+    for (plato of menu) {
+        const {nombre,img, precio, id} = plato;
+        html = 
         `<div class = "las-cartas"> 
-                <div class="card"> <img src="img/${i.img}" class="card-img-top">
+                <div class="card"> <img src="img/${img}" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">${i.nombre.toUpperCase()}</h5>
-                        <p class="card-text">$${i.precio}</p>
-                        <button type='button' class='btn btn-primary' id="${i.btn}">Añadir al carrito</button>
+                        <h5 class="card-title">${nombre.toUpperCase()}</h5>
+                        <p class="card-text">$${precio}</p>
+                        <button type='button' class='btn btn-primary' onclick= "agregarCarrito(${id})" >Añadir al carrito</button>
                     </div>
 
                 </div>
         </div> `;
         cartas.innerHTML += html;
-}
-
-    
-    // filtrado de platos
-    function filtrarPlatos (filtro) {
-        let filtrado = data.filter((el) => {
-            return el.nombre.includes(filtro);
-        });
-        return filtrado;
     }
-    
-    const botonBuscar = document.querySelector("#boton-buscar"),
-    search = document.querySelector(".boton-filtrar"),
-    cantidadPlato = document.querySelector(".cantidad-plato");
-    
-    
-    botonBuscar.addEventListener("click", (e) => {
-        e.preventDefault();
-        cartas.innerHTML = "";
-        let filtro = filtrarPlatos(search.value);
-        pedirPlato(filtro);
-    })
-    
-
-const carrito = [];
-
-function agregarCarrito(arr, item) {
-    return arr.push(item);
 }
 
-function agregarLocal(arr) {
-    localStorage.setItem("carrito", arr)
+botonMenu.addEventListener("click", ()=> {
+    cartas.id = "mostrar-cartas";
+    verCarro.id ="mostrar-ver-carro";
+    verBtnCarrito.id = "btn-mostrar-carrito";
+
+    crearHTML();
+})
+
+
+
+// filtrado de platos
+function filtrarPlatos (filtro) {
+    let filtrado = menu.filter((el) => {
+        return el.nombre.includes(filtro);
+    });
+    return filtrado;
 }
 
-const botonCheesecake = document.querySelector("#cheesecake-de-frambuesas"),
-botonDona = document.querySelector("#dona-bañada-en-chocolate-negro"),
-botonWaffles = document.querySelector("#waffles-con-frutilla-y-arandanos");
+const botonBuscar = document.querySelector("#boton-buscar"),
+search = document.querySelector(".boton-filtrar"),
+cantidadPlato = document.querySelector(".cantidad-plato");
 
-const cheesecake = data[0],
-donaChocolate = data[1],
-waffles = data[2];
 
-botonCheesecake.addEventListener("click", ()=> {
-    agregarCarrito(carrito, cheesecake);
-    const cheesecakeJson = JSON.stringify(cheesecake);
-    localStorage.setItem("cheesecake", cheesecakeJson);
+botonBuscar.addEventListener("click", (e) => {
+    e.preventDefault();
+    cartas.innerHTML = "";
+    let filtro = filtrarPlatos(search.value);
+    pedirPlato(filtro);
+})
+
+
+// Traer del localStorage los platos para el carrito, y si no hay platos vaciar el carrito
+
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+// Guardar los platos en el localStorage
+
+function guardarLocal() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+// Pushear los platos clickeados al carrito
+
+function agregarCarrito(id) {
+    const plato = menu.find(plato => plato.id == id);
+
+    carrito.push(plato);
     Toastify({
         text: "Se agregó al carrito",
         duration: 3000
         }).showToast();
 
-        agregarLocal(JSON.stringify(carrito));
-})
-
-botonDona.addEventListener("click", ()=> {
-    agregarCarrito(carrito, donaChocolate);
-    const donaChocolateJson = JSON.stringify(donaChocolate);
-    localStorage.setItem("dona", donaChocolateJson);
-    Toastify({
-        text: "Se agregó al carrito",
-        duration: 3000
-        }).showToast();
-
-        agregarLocal(JSON.stringify(carrito));
-})
-
-botonWaffles.addEventListener("click", ()=> {
-    agregarCarrito(carrito, waffles);
-    const wafflesJson = JSON.stringify(waffles);
-    localStorage.setItem("waffles", wafflesJson);
-    Toastify({
-        text: "Se agregó al carrito",
-        duration: 3000
-        }).showToast();
-
-        agregarLocal(JSON.stringify(carrito));
-})
-
+        guardarLocal();
+}
 
 // Mostrar el carrito
 
 function verCarrito(array) {
-    let html;
-    for (const menu of array) {
+let html;
+for (const menu of array) {
 
+    const { nombre, img, precio} = menu;
 
-        const { nombre, precio, img} = menu;
-
-        html = 
-        `<div class = "g-col-6"> 
-                <div class="card" style="width: 18rem;"> <img src="img/${img}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">${nombre.toUpperCase()}</h5>
-                        <p class="card-text">$${precio}</p>
-                    </div>
-
+    html = 
+    `<div class = "g-col-6"> 
+            <div class="card" style="width: 18rem;"> <img src="img/${img}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">${nombre.toUpperCase()}</h5>
+                    <p class="card-text">$${precio}</p>
                 </div>
-        </div> `;
-        verCarro.innerHTML += html;
-        
-    }
+
+            </div>
+    </div> `;
+    verCarro.innerHTML += html;
+    
 }
+}
+
 
 const comprarBtn = document.querySelector(".ver-btn-comprar");
 
 btnMostrarCarrito.addEventListener("click", (e) => {
-    e.preventDefault();
-    verCarro.innerHTML = "";
-    verCarrito(JSON.parse(localStorage.getItem("carrito")));
-    comprarBtn.id = "ver-btn-comprar";
+e.preventDefault();
+verCarro.innerHTML = "";
+verCarrito(carrito);
+comprarBtn.id = "ver-btn-comprar";
 })
 
 const botonComprar = document.querySelector(".boton-comprar");
 
 botonComprar.addEventListener("click", (e)=> {
-    e.preventDefault();
+e.preventDefault();
 
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    carrito == ""
-    ? Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'El Carrito no puede estar vacío',
-    })
-    : window.location.href = "pages/comprar.html";
+carrito == ""
+? Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'El Carrito no puede estar vacío',
+})
+: window.location.href = "pages/comprar.html";
 
 })
 
 
-
-
-}
-
-pedirPlato();
-        
 
