@@ -25,7 +25,11 @@
 <body class="body">
     
 
-    <header><h2 class="titulo-comprar">Realizar la Compra</h2></header>
+    <header>
+        
+        <a class="volver" href="../index.html">🢀Volver</a>
+        
+        <h2 class="titulo-comprar">Realizar la Compra</h2></header>
 
     <main class="main-comprar">
         <div class="tabla-comprar">
@@ -34,6 +38,7 @@
                 <tr>
                     <th class="tabla">Nombre</th>
                     <th class="tabla">Precio</th>
+                    <th class="tabla">Cantidad</th>
                 </tr>
             </thead>
             <tbody class="contenedor-compra">
@@ -72,6 +77,10 @@
             <div class="form-floating">
                 <input type="text" class="input-element-2 form-control" id="floatingPassword">
                 <label for="floatingInput">Fecha de vencimiento</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="input-element-3 form-control" id="floatingPassword">
+                <label for="floatingInput">Números de atrás</label>
             </div>
 
             <input type="button" value="Comprar" class="boton-realizar-compra">

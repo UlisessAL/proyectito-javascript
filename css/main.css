@@ -64,7 +64,7 @@
 }
 
 .boton-sesion{
-    padding-left: 200px;
+    padding-left: 110px;
 }
 
 .boton-iniciar{
@@ -177,12 +177,39 @@
     margin-top: 50px;
 }
 
+.buscar-plato{
+    display: none;
+}
+
+#buscar-plato{
+    display: inline-block;
+}
+
 .boton-filtrar{
     margin-left: 800px;
-    margin-bottom: 30px;
+
     background-color: #ffa8d9;
     font-size: 20px;
     color: #0d0d0e;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+}
+
+#boton-buscar{
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background: #ffa8d9;
+    box-shadow: 0 5px #ff69b4;
 }
 
 .ver-carro{
@@ -276,6 +303,7 @@
     border-color: #D80286;
     font-family: 'Satisfy', cursive;
     color: #473e43;
+    padding-right: 30px;
 }
 
 .opcion-comprar{
@@ -284,7 +312,7 @@
 }
 
 .boton-realizar-compra{
-    margin-left: 200px;
+    margin-left: 130px;
     margin-top: 50px;
     margin-bottom: 30px;
     padding-top: 200px;
@@ -323,7 +351,7 @@
     width: 450px;
     grid-area: imagen;
     margin-right: 20px;
-    margin-top: -400px;
+    margin-top: -470px;
 }
 
 .div-comprar{
@@ -333,5 +361,15 @@
 
 .subtitulo-comprar{
     color: #e02c9b;
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.input-element-3{
+    margin-top: 20px;
+}
+
+.volver{
+    font-size: 40px;
+    text-decoration: none;
     font-family: 'Mochiy Pop One', sans-serif;
 }

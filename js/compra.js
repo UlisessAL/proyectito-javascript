@@ -10,7 +10,7 @@ function hacerTabla() {
     let html;
     for (plato of carrito) {
 
-        const { nombre, precio} = plato,
+        const { nombre, precio, cantidad} = plato,
         precioTotal = document.querySelector(".precio-total"),
         total = totalPrecio();
 
@@ -19,7 +19,8 @@ function hacerTabla() {
         html = 
         `<tr>
             <td class ="tabla">${nombre} --->  </td>
-			<td class ="tabla">$${precio}</td></tr>
+			<td class ="tabla">$${precio * cantidad}</td>
+            <td class ="tabla">${cantidad}</td>
         </tr>
 		`;
         contenedorCompra.innerHTML += html;
@@ -33,7 +34,7 @@ hacerTabla();
 function totalPrecio() {
     let total = 0;
     for (plato of carrito) {
-        total += plato.precio;
+        total += plato.precio * plato.cantidad;
     }
 
     return total
@@ -54,8 +55,14 @@ var cleave = new Cleave('.input-element-2', {
     datePattern: ['Y', 'm', 'd']
 });
 
+var cleave = new Cleave('.input-element-3', {
+    blocks: [4],
+    uppercase: true
+});
+
 const inputComprar1 = document.querySelector(".input-element"),
 inputComprar2 = document.querySelector(".input-element-2"),
+inputComprar3 = document.querySelector(".input-element-3"),
 btnRealizarCompra = document.querySelector(".boton-realizar-compra"),
 nombreCompra = document.querySelector(".nombre-compra"),
 emailCompra = document.querySelector(".email-compra")
@@ -76,7 +83,7 @@ btnRealizarCompra.addEventListener("click", (e)=>{
             title: 'Tu compra se realizó con éxito',
             timer: 4500,
         })
-            localStorage.clear();
+            localStorage.removeItem("carrito");
             setTimeout(()=>{
                 window.location.href = "../index.html";
             },2500)

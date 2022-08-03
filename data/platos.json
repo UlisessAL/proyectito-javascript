@@ -16,5 +16,23 @@
     "img":"waffles-frutas.jpg",
     "nombre":"waffles con frutilla y arandanos",
     "precio":2300
+    },
+    {
+    "id":4,
+    "img":"magdalena.jpg",
+    "nombre":"magdalenas",
+    "precio":450
+    },
+    {
+    "id":5,
+    "img":"cookies.jpg",
+    "nombre":"cookies",
+    "precio":80
+    },
+    {
+    "id":6,
+    "img":"macarrones.jpg",
+    "nombre":"macarrones",
+    "precio":150
     }
 ]
