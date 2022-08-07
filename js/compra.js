@@ -1,8 +1,7 @@
 // Llamar a los platos que estan en platos.json
 
-const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-const contenedorCompra = document.querySelector(".contenedor-compra");
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [],
+contenedorCompra = document.querySelector(".contenedor-compra");
 
 // Hacer la tabla del carrito
 
@@ -14,11 +13,11 @@ function hacerTabla() {
         precioTotal = document.querySelector(".precio-total"),
         total = totalPrecio();
 
-        precioTotal.innerHTML = total;
+        precioTotal.innerHTML = "$" + total;
 
         html = 
         `<tr>
-            <td class ="tabla">${nombre} --->  </td>
+            <td class ="tabla">${nombre}</td>
 			<td class ="tabla">$${precio * cantidad}</td>
             <td class ="tabla">${cantidad}</td>
         </tr>
@@ -71,7 +70,7 @@ emailCompra = document.querySelector(".email-compra")
 
 btnRealizarCompra.addEventListener("click", (e)=>{
     e.preventDefault();
-    if (inputComprar1.value == "" || inputComprar2.value == "" || nombreCompra.value == "" || emailCompra.value == "") {
+    if (inputComprar1.value == "" || inputComprar2.value == "" || inputComprar3.value == "" || nombreCompra.value == "" || emailCompra.value == "") {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
