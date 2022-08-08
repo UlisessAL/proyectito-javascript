@@ -55,7 +55,7 @@ var cleave = new Cleave('.input-element-2', {
 });
 
 var cleave = new Cleave('.input-element-3', {
-    blocks: [4],
+    blocks: [3],
     uppercase: true
 });
 
